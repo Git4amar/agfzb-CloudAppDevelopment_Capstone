@@ -1,0 +1,9 @@
+#body_block {
+    padding-top: 25vh;
+}
+
+@media only screen and (min-width: 768px) {
+    #body_block {
+        padding-top: 20vh;
+    }
+}
