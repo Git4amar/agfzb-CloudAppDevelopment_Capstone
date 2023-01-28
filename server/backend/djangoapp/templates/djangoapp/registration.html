@@ -1,0 +1,18 @@
+{% extends "djangoapp/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div id="body_block" class="container">
+    <div class="row mb-2">
+        <div class="col d-flex justify-content-center">
+            <h4>Sign Up</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            {% crispy registration_form %}
+        </div>
+    </div>
+</div>
+{% endblock content%}

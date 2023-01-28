@@ -1,0 +1,73 @@
+{% extends "djangoapp/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div id="body_block" class="container-fluid">
+    <h1 class="display-4 text-center">Welcome to {{ dealership_details.full_name }}</h1>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-lg-4 border-end border-primary">
+                <h1 class="display-6 text-center text-decoration-underline fst-italic">Address</h1>
+                <div class="card border-info w-auto">
+                    <div class="card-header">Location</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Vist us at</h4>
+                        <p class="card-text">{{ dealership_details.address }}, {{ dealership_details.city }},
+                            {{ dealership_details.st }} - {{ dealership_details.zip }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <h1 class="display-6 text-center text-decoration-underline fst-italic">Reviews</h1>
+                {% if user.is_authenticated %}
+                <div class="d-grid">
+                    <a class="btn btn-info"
+                        href="{% url 'djangoapp:add_review' dealership_details.id dealership_details.full_name %}">Add a
+                        review</a>
+                </div>
+                {% endif %}
+                <div class="container d-flex flex-wrap justify-content-evenly mt-3">
+                    {% if dealership_reviews|length > 0 %}
+                    {% for review in dealership_reviews %}
+                    <div class="card text-white
+        bg-{% if review.sentiment == 'positive' %}success{% elif review.sentiment == 'negative' %}danger{% else %}warning{% endif %}
+        mb-3" style="max-width: 20rem;">
+                        <div class="card-header">
+                            {% if review.sentiment == "positive" %}
+                            <img class="card-img-left img-fluid img-thumbnail" width="25%" height="25%"
+                                src="{% static 'djangoapp/emoji/positive.png' %}" alt="Positive Emoji">
+                            {% elif review.sentiment == "negative" %}
+                            <img class="card-img-left img-fluid img-thumbnail" width="25%" height="25%"
+                                src="{% static 'djangoapp/emoji/negative.png' %}" alt="Negative Emoji">
+                            {% else %}
+                            <img class="card-img-left img-fluid img-thumbnail" width="25%" height="25%"
+                                src="{% static 'djangoapp/emoji/neutral.png' %}" alt="Neutral Emoji">
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <dl>
+                                    <dt class="text-primary">Purchase:</dt>
+                                    {% if review.purchase is True %}
+                                    <dd>{{ review.car_make }}, {{ review.car_model }}<br>{{ review.car_year }}</dd>
+                                    {% else %}
+                                    <dd>No purchase made</dd>
+                                    {% endif %}
+                                </dl>
+                            </h4>
+                            <dl class="card-dark">
+                                <dt class="text-primary">Review:</dt>
+                                <dd>{{ review.review }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <h4>No Reviews</h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

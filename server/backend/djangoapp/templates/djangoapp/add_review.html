@@ -1,0 +1,14 @@
+{% extends "djangoapp/layout.html" %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'djangoapp/review_form.js' %}"></script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="body_block" class="container">
+    <div id="review_form" class="container" data-dealer-name="{{ dealer_name }}"
+        data-form-action="{% url 'djangoapp:add_review' dealer_id dealer_name %}" data-dealer-id="{{ dealer_id }}">
+    </div>
+</div>
+{% endblock content%}

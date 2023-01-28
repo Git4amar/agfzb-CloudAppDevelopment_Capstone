@@ -1,0 +1,7 @@
+**/*.sqlite3
+**/__pychache__
+*static*
+**/migrations
+*cr_secret_config.json
+*.yaml
+*nginx

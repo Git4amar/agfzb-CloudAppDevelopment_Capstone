@@ -1,4 +1,9 @@
+# Cloudant
 {
-    "COUCH_URL": "",
-    "IAM_API_KEY": ""
+    "CLOUDANT_URL": "https://fc6c5416-f48e-4d6b-937f-3c253dab872b-bluemix.cloudantnosqldb.appdomain.cloud",
+    "IAM_API_KEY": "gqjqsDUli9gEj_ctek4dMk3n3zXZF2ERUOl5ZsE2PMkn"
+}
+# functions
+{
+    "API_KEY": "8PIAL2WST45FevBhNlPlptFXuOW_n-qn-qndK61IuuAw"
 }
