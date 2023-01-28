@@ -544,7 +544,7 @@
       "name": "Sherwood Brogan",
       "dealership": 34,
       "review": "Stand-alone holistic model",
-      "purchase": false,
+      "purchase": true,
       "purchase_date": "05/10/2020",
       "car_make": "Cadillac",
       "car_model": "DeVille",
