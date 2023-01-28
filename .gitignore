@@ -1,3 +1,5 @@
+set_superuser.sh
+
 .vscode
 
 # Byte-compiled / optimized / DLL files
@@ -140,3 +142,8 @@ server/djangoapp/migrations/
 *.pyc
 server/djangoapp/migrations/
 
+# Ignore env files
+.env*
+
+# Ignore db.sqlite3
+db.sqlite3
