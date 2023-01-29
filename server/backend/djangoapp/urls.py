@@ -35,4 +35,4 @@ urlpatterns = [
     # path for React review form API
     path('details/<int:dealer_id>/', views.review_form_details, name='details_review_form'),
 
-] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

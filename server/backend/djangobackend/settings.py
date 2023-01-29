@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as message_constants
 from dotenv import load_dotenv
+from sshtunnel import SSHTunnelForwarder
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,12 +94,23 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+ssh_tunnel = SSHTunnelForwarder(
+    os.environ.get("POSTGRES_SERVER_IP"),
+    ssh_private_key = os.path.join(BASE_DIR, os.environ.get("SSH_KEY_NAME")),
+    ssh_private_key_password = os.environ.get("SSH_KEY_PASS"),
+    ssh_username = os.environ.get("SSH_USERNAME"),
+    remote_bind_address = ('localhost', 5432)
+)
+ssh_tunnel.start()
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': '/mnt/dealership/db.sqlite3'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': 'localhost',
+        'PORT': ssh_tunnel.local_bind_port,
     }
 }
 

@@ -109,7 +109,9 @@ function ReviewForm(props) {
     rows: "3",
     spellcheck: "false",
     value: review.content,
-    onChange: update_review
+    onChange: update_review,
+    required: true,
+    autoFocus: true
   }), validation.error_content ? /*#__PURE__*/React.createElement("div", {
     class: "invalid-feedback"
   }, "Please enter a valid review") : null)), /*#__PURE__*/React.createElement("div", {
@@ -166,7 +168,8 @@ function ReviewForm(props) {
     className: `form-control ${validation.error_purchase_date ? 'is-invalid' : null}`,
     id: "purchase_date",
     value: review.purchase_date,
-    onChange: update_review
+    onChange: update_review,
+    required: true
   }), validation.error_purchase_date ? /*#__PURE__*/React.createElement("div", {
     class: "invalid-feedback"
   }, "Please select a valid date of purchase") : null))) : null, /*#__PURE__*/React.createElement("div", {

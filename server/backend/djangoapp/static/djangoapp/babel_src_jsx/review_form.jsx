@@ -106,7 +106,7 @@ function ReviewForm(props) {
                             <div className="col">
                                 <label for="review" className="form-label mt-4">Enter the review content:</label>
                                 <textarea name="content" className={`form-control ${validation.error_content ? 'is-invalid' : null}`} id="review" rows="3" spellcheck="false"
-                                    value={review.content} onChange={update_review}></textarea>
+                                    value={review.content} onChange={update_review} required autoFocus></textarea>
                                 {
                                     validation.error_content
                                         ?
@@ -152,7 +152,7 @@ function ReviewForm(props) {
                                     <div className="row mb-2">
                                         <div className="col">
                                             <label className="col-form-label" for="purchase_date">Select Purchase Date</label>
-                                            <input name="purchase_date" type="date" className={`form-control ${validation.error_purchase_date ? 'is-invalid' : null}`} id="purchase_date" value={review.purchase_date} onChange={update_review} />
+                                            <input name="purchase_date" type="date" className={`form-control ${validation.error_purchase_date ? 'is-invalid' : null}`} id="purchase_date" value={review.purchase_date} onChange={update_review} required />
                                             {
                                                 validation.error_purchase_date
                                                     ?

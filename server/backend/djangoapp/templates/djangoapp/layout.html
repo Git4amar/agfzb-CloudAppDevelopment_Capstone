@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Full Stack Application Development Project - IBM CAD0321EN">
     <meta name="author" content="Amarpreet Singh Bir">
-    <title>Dealership Review</title>
+    <title>{% block title %}{% endblock title %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -24,8 +24,8 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="https://kit.fontawesome.com/2ab71768b4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'djangoapp/stylesheet.css' %}">
+    <script src="{% static 'djangoapp/active_nav.js' %}"></script>
     {% block scripts %}{% endblock scripts %}
-    {% block title %}{% endblock title %}
 </head>
 
 <body>
@@ -45,19 +45,19 @@
                             <div class="collapse navbar-collapse" id="main_nav">
                                 <ul class="navbar-nav me-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{% url 'djangoapp:index' %}">Home</a>
+                                        <a id="nav_home" class="nav-link" href="{% url 'djangoapp:index' %}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'djangoapp:about_us' %}">About Us</a>
+                                        <a id="nav_about_us" class="nav-link" href="{% url 'djangoapp:about_us' %}">About Us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact Us</a>
+                                        <a id="nav_contact_us" class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact Us</a>
                                     </li>
                                 </ul>
                                 {% if user.is_authenticated %}
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">{{ user.username }}</a>
+                                        <a class="nav-link disabled text-white" href="#">{{ user.username }}</a>
                                     </li>
                                     <li class="nav-item">
                                         <form action="{% url 'djangoapp:logout' %}" class="d-lg-flex" method="get">
@@ -68,7 +68,7 @@
                                 {% else %}
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+                                        <a id="nav_sign_up" class="nav-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
                                     </li>
                                 </ul>
                                 <form action="{% url 'djangoapp:login' %}" class="d-lg-flex" method="post"

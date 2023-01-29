@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dealership-app
+  #annotations:
+  #  nginx.ingress.kubernetes.io/app-root: /djangoapp
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "*.practice2deploy4amar.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dealership-frontend
+                port:
+                  number: 80

@@ -36,18 +36,11 @@ spec:
         run: dealership-app
         tier: backend
     spec:
-      volumes:
-        - name: dealership-persistent-storage
-          persistentVolumeClaim:
-            claimName: dealership-pv-claim
       containers:
       - image: us.icr.io/dealership_app_amar/dealership_app:v1
-        #imagePullPolicy: Always
+        imagePullPolicy: Always
         name: dealership-app
         ports:
         - containerPort: 8000
           protocol: TCP
-        volumeMounts:
-          - mountPath: "/mnt/dealership"
-            name: dealership-persistent-storage
       restartPolicy: Always
