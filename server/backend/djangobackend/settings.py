@@ -38,7 +38,7 @@ CSRF_COOKIE_SECURE = bool(int(os.environ.get("CSRF_COOKIE_SECURE")))
 SESSION_COOKIE_SECURE = bool(int(os.environ.get("SESSION_COOKIE_SECURE")))
 
 # TBD CSRF failure debug
-CSRF_FAILURE_VIEW='djangoapp.views.csrf_failure'
+#CSRF_FAILURE_VIEW='djangoapp.views.csrf_failure'
 
 # Application definition
 
