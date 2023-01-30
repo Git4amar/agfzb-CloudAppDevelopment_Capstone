@@ -1,5 +1,6 @@
 set_superuser.sh
-
+ssh_keys/
+cr_secret_*
 .vscode
 
 # Byte-compiled / optimized / DLL files
